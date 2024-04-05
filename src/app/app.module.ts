@@ -8,12 +8,12 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 import { HomeComponent } from './home/home.component';
 import { HttpClientModule } from '@angular/common/http';
 import { ProductCardComponent } from './components/product/product-card.component';
+import { RatingComponent } from './components/product/components/rating.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    HomeComponent,
-    ProductCardComponent
+    
   ],
   imports: [
     BrowserModule,
@@ -21,6 +21,9 @@ import { ProductCardComponent } from './components/product/product-card.componen
     BrowserAnimationsModule,
     NavbarComponent,
     HttpClientModule,
+    ProductCardComponent,
+    RatingComponent,
+    HomeComponent
   ],
   providers: [],
   bootstrap: [AppComponent]
