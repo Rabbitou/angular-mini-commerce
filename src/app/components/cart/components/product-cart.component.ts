@@ -10,10 +10,10 @@ import { CartService } from 'src/app/services/cart.service';
   selector: 'mc-product-cart',
   standalone: true,
   template: `<div
-    class="flex justify-start items-center space-x-2 lg:space-x-7 p-4 rounded-3xl hover:bg-bg-secondary"
+    class="flex max-md:flex-col justify-start items-center space-x-2 lg:space-x-7 p-4 rounded-3xl hover:bg-bg-secondary"
   >
     <img [src]="product.image" alt="" class="w-16 md:w-20" />
-    <div class="flex flex-1 justify-between items-center">
+    <div class="flex flex-1 gap-2 items-center">
       <div class="">
         <p class="font-semibold text-base line-clamp-1">
           {{ product.title }}

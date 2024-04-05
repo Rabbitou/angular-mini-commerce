@@ -17,14 +17,18 @@ import { ProductCartComponent } from './components/product-cart.component';
     <div class="flex items-center justify-between p-4 w-full border-b">
       <h3 mat-dialog-title class="text-xl font-semibold">Your cart</h3>
     </div>
-    <mat-dialog-content class="!min-h-60 !w-[500px]">
-      <div class="relative flex-auto p-4 overflow-y-auto w-full border-b">
+    <mat-dialog-content class="!min-h-60 md:!w-[550px] w-[300px]">
+      <div
+        class="relative flex-auto p-4 overflow-y-auto w-full border-b max-sm:text-sm"
+      >
         <div class="flex justify-between items-center mb-2">
-          <p class="font-semibold">{{ totalItems$ | async }} Articles</p>
+          <p class="font-semibold max-md:text-xs">
+            {{ totalItems$ | async }} Articles
+          </p>
           <button
             mat-stroked-button
             color="warn"
-            class="!rounded-full capitalize"
+            class="!rounded-full max-md:!w-28 capitalize max-md:!text-xs"
             (click)="clearCart()"
           >
             <mat-icon>delete</mat-icon>clear cart

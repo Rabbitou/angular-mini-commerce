@@ -3,8 +3,10 @@ import { Component, Input, inject } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatDialog } from '@angular/material/dialog';
 import { MatIconModule } from '@angular/material/icon';
+import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
 import { Product } from 'src/app/models/product';
 import { CartService } from 'src/app/services/cart.service';
+import { SnackBarComponent } from '../snackbar/snack-bar.component';
 import { ProductCardDialogComponent } from './components/product-card-dialog.component';
 import { RatingComponent } from './components/rating.component';
 
@@ -36,7 +38,7 @@ import { RatingComponent } from './components/rating.component';
         mat-flat-button
         color="primary"
         class="!rounded-full capitalize"
-        (click)="addToCart(data.id)"
+        (click)="addToCart(data.id); openSnackBar()"
       >
         <mat-icon>shopping_cart</mat-icon>add to cart
       </button>
@@ -49,6 +51,7 @@ import { RatingComponent } from './components/rating.component';
     CurrencyPipe,
     LowerCasePipe,
     RatingComponent,
+    MatSnackBarModule,
   ],
 })
 export class ProductCardComponent {
@@ -56,7 +59,13 @@ export class ProductCardComponent {
   @Input() style?: string;
 
   private cartService = inject(CartService);
-  constructor(public dialog: MatDialog) {}
+  constructor(public dialog: MatDialog, private _snackBar: MatSnackBar) {}
+
+  openSnackBar() {
+    this._snackBar.openFromComponent(SnackBarComponent, {
+      duration: 2 * 1000,
+    });
+  }
 
   openDialog(): void {
     this.dialog.open(ProductCardDialogComponent, { data: this.data });
